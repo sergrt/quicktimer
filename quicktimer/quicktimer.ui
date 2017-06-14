@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>quicktimerClass</class>
+ <widget class="QMainWindow" name="quicktimerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>149</width>
+    <height>18</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>quicktimer</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="1,0">
+    <property name="leftMargin">
+     <number>2</number>
+    </property>
+    <property name="topMargin">
+     <number>1</number>
+    </property>
+    <property name="rightMargin">
+     <number>2</number>
+    </property>
+    <property name="bottomMargin">
+     <number>1</number>
+    </property>
+    <property name="spacing">
+     <number>2</number>
+    </property>
+    <item row="0" column="1">
+     <widget class="QToolButton" name="closeButton">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolButton {
+border: 0;
+}
+QToolButton:hover:!pressed {
+  border: 1px solid red;
+}</string>
+      </property>
+      <property name="text">
+       <string>X</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="TimerLabel" name="timerLabel">
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>TimerLabel</class>
+   <extends>QLabel</extends>
+   <header>TimerLabel.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="quicktimer.qrc"/>
+ </resources>
+ <connections/>
+</ui>
