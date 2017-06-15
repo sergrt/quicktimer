@@ -62,9 +62,12 @@ void quicktimer::connectSignals() {
 
         if (timeLeft_ <= std::chrono::seconds(0)) {
             timer_.stop();
-            QMessageBox m(QMessageBox::Information, "Timeout", " Timer timed out", QMessageBox::Ok);
-            m.setWindowFlags(m.windowFlags() | Qt::WindowStaysOnTopHint);
-            m.exec();
+            QMessageBox* m = new QMessageBox(QDesktopWidget().screen());
+            m->setAttribute(Qt::WA_DeleteOnClose, true);
+            m->setWindowFlags(m->windowFlags() | Qt::WindowStaysOnTopHint);
+            m->setWindowTitle("Timeout");
+            m->setText("Timer timed out");
+            m->show();
         }
     });
 

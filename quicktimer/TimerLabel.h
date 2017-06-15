@@ -12,7 +12,7 @@ public:
     void mouseMoveEvent(QMouseEvent *evt) override;
     void setTime(std::chrono::seconds seconds);
 private:
-    QPoint localMousePos_;
+    QPoint localMousePos_; // position inside window to calculate offset
 signals:
     void doubleClick();
     void updateMainWindowPos(const int x, const int y);
