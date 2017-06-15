@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="quicktimer">
+    <qresource prefix="/quicktimer">
+        <file>quicktimer.ico</file>
     </qresource>
 </RCC>

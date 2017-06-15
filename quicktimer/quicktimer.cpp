@@ -6,7 +6,11 @@ const int internalTimerInterval = 1000;
 quicktimer::quicktimer(QWidget *parent)
     : QMainWindow(parent) {
     ui.setupUi(this);
-    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    trayIcon_.setIcon(QIcon(":/quicktimer/quicktimer.ico"));
+    trayIcon_.show();
+
+    //this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
 
     applySettings();
     connectSignals();
@@ -34,7 +38,7 @@ void quicktimer::run() {
 }
 void quicktimer::connectSignals() {
     connect(ui.closeButton, &QToolButton::clicked, this, [&]() {
-        close();
+        QApplication::quit();
     });
 
     connect(ui.timerLabel, &TimerLabel::doubleClick, this, [&]() {
@@ -61,6 +65,15 @@ void quicktimer::connectSignals() {
             QMessageBox m(QMessageBox::Information, "Timeout", " Timer timed out", QMessageBox::Ok);
             m.setWindowFlags(m.windowFlags() | Qt::WindowStaysOnTopHint);
             m.exec();
+        }
+    });
+
+    connect(&trayIcon_, &QSystemTrayIcon::activated, this, [&](QSystemTrayIcon::ActivationReason reason) {
+        if (reason == QSystemTrayIcon::DoubleClick) {
+            if (!isVisible())
+                show();
+            else
+                hide();
         }
     });
 }

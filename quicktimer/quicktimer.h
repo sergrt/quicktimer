@@ -13,8 +13,9 @@ public:
     ~quicktimer();
 private:
     Ui::quicktimerClass ui;
-    Settings settings_;
+    QSystemTrayIcon trayIcon_;
 
+    Settings settings_;
     QTimer timer_;
     std::chrono::seconds timeLeft_;
 
