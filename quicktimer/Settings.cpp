@@ -52,7 +52,8 @@ void Settings::save() const {
 
     s.setValue("X", x_);
     s.setValue("Y", y_);
-    
+    s.endGroup();
+
     s.beginGroup("Intervals");
     for (int i = 0; i < menuIntervals_.size(); ++i)
         s.setValue(intervalSettingsName(i).c_str(), QVariant::fromValue<int>(menuIntervals_[i].count()));
