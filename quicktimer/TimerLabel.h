@@ -16,5 +16,6 @@ private:
 signals:
     void doubleClick();
     void updateMainWindowPos(const int x, const int y);
+    void rightClick(const QPoint&);
 };
 

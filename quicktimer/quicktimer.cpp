@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "quicktimer.h"
+#include "utils.h"
 
 const int internalTimerInterval = 1000;
 
@@ -9,6 +10,7 @@ quicktimer::quicktimer(QWidget *parent)
     trayIcon_.setIcon(QIcon(":/quicktimer/quicktimer.ico"));
     trayIcon_.show();
 
+    fillTimerMenu();
     //this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     this->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
 
@@ -79,4 +81,24 @@ void quicktimer::connectSignals() {
                 hide();
         }
     });
+
+    connect(ui.timerLabel, &TimerLabel::rightClick, this, [&](const QPoint& p) {
+        timerMenu_.exec(p);
+    });
+}
+
+void quicktimer::fillTimerMenu() {
+    auto intervals = settings_.menuIntervals();
+    for (const auto i : intervals) {
+        if (i.count() > 0) {
+            auto f = std::bind([&](const std::chrono::seconds x) {
+                if (timer_.isActive())
+                    timer_.stop();
+                
+                timeLeft_ = x;
+                run();
+            }, i);
+            timerMenu_.addAction(toHumanTime(i).c_str(), this, f);
+        }
+    }
 }

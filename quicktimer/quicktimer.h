@@ -23,4 +23,7 @@ private:
     void connectSignals();
 
     void run();
+
+    void fillTimerMenu();
+    QMenu timerMenu_;
 };

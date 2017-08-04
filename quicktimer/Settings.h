@@ -20,6 +20,8 @@ private:
 
     int x_;
     int y_;
+    
+    std::vector<std::chrono::seconds> menuIntervals_;
 public:
     auto timerInterval() const->decltype(timerInterval_);
     auto backgroundCss() const->decltype(backgroundCss_);
@@ -31,6 +33,7 @@ public:
     auto height() const->decltype(height_);
     auto x() const->decltype(x_);
     auto y() const->decltype(y_);
+    auto menuIntervals() const->decltype(menuIntervals_);
 
     void setX(decltype(x_) x);
     void setY(decltype(y_) y);

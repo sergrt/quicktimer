@@ -2,6 +2,11 @@
 #include "Settings.h"
 
 const std::string Settings::fileName = "settings.ini";
+const int maxMenuIntervals = 10;
+
+static std::string intervalSettingsName(int i) {
+    return "Interval" + std::to_string(i);
+}
 
 Settings::Settings() {
     QSettings s(QString::fromStdString(fileName), QSettings::IniFormat);
@@ -21,7 +26,11 @@ Settings::Settings() {
 
     x_ = s.value("X", 0).toInt();
     y_ = s.value("Y", 0).toInt();
+    s.endGroup();
 
+    s.beginGroup("Intervals");
+    for (int i = 0; i < maxMenuIntervals; ++i)
+        menuIntervals_.push_back(std::chrono::seconds(s.value(intervalSettingsName(i).c_str(), 0).toInt()));
     s.endGroup();
 }
 
@@ -43,7 +52,15 @@ void Settings::save() const {
 
     s.setValue("X", x_);
     s.setValue("Y", y_);
+    
+    s.beginGroup("Intervals");
+    for (int i = 0; i < menuIntervals_.size(); ++i)
+        s.setValue(intervalSettingsName(i).c_str(), QVariant::fromValue<int>(menuIntervals_[i].count()));
 
+    if (menuIntervals_.size() < maxMenuIntervals) {
+        for (int i = menuIntervals_.size(); i < maxMenuIntervals; ++i)
+            s.setValue(intervalSettingsName(i).c_str(), QVariant::fromValue<int>(0));
+    }
     s.endGroup();
 }
 
@@ -73,6 +90,9 @@ auto Settings::x() const->decltype(x_) {
 }
 auto Settings::y() const->decltype(y_) {
     return y_;
+}
+auto Settings::menuIntervals() const->decltype(menuIntervals_) {
+    return menuIntervals_;
 }
 void Settings::setX(decltype(x_) x) {
     x_ = x;
