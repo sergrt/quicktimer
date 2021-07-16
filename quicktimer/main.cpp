@@ -1,4 +1,4 @@
-#include "quicktimer.h"
+#include "QuickTimer.h"
 
 #include <QApplication>
 #include <QCryptographicHash>
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     a.setQuitOnLastWindowClosed(false);
-    quicktimer w;
+    QuickTimer w;
     w.show();
     return a.exec();
 }

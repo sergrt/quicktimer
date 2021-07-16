@@ -11,16 +11,17 @@
 
 #include <chrono>
 
-class quicktimer : public QMainWindow {
+class QuickTimer : public QMainWindow {
     Q_OBJECT
 
 public:
-    quicktimer(QWidget *parent = Q_NULLPTR);
-    ~quicktimer();
-private:
-    Ui::quicktimerClass ui;
-    QSystemTrayIcon trayIcon_;
+    QuickTimer(QWidget *parent = Q_NULLPTR);
+    ~QuickTimer();
 
+private:
+    Ui::quicktimerClass ui_;
+    QSystemTrayIcon trayIcon_;
+    QMenu timerMenu_;
     Settings settings_;
     QTimer timer_;
     std::chrono::seconds timeLeft_;
@@ -31,5 +32,5 @@ private:
     void run();
 
     void fillTimerMenu();
-    QMenu timerMenu_;
+    void execFinishAction();
 };

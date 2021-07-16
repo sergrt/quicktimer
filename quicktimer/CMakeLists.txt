@@ -14,13 +14,13 @@ set(CMAKE_AUTORCC ON)
 
 set(SOURCE
 	main.cpp
-	quicktimer.cpp
+	QuickTimer.cpp
 	Settings.cpp
 	TimerLabel.cpp
 	utils.cpp)
 
 set(HEADER
-    quicktimer.h
+    QuickTimer.h
     Settings.h
     TimerLabel.h
 	utils.h)
