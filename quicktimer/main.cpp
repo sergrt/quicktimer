@@ -1,7 +1,9 @@
-#include "stdafx.h"
 #include "quicktimer.h"
-#include <QtWidgets/QApplication>
+
+#include <QApplication>
 #include <QCryptographicHash>
+#include <QSharedMemory>
+#include <QSystemSemaphore>
 
 namespace
 {

@@ -1,6 +1,7 @@
-#include "stdafx.h"
 #include "TimerLabel.h"
 #include "utils.h"
+
+#include <QMouseEvent>
 
 TimerLabel::TimerLabel(QWidget* parent)
     : QLabel(parent) {

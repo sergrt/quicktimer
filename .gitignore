@@ -117,3 +117,5 @@ build-QtViewer-*/
 ################################################################
 ## Resharper
 _ReSharper.Caches/
+
+build/

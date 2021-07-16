@@ -1,6 +1,8 @@
-#include "stdafx.h"
 #include "quicktimer.h"
 #include "utils.h"
+
+#include <QMessageBox>
+#include <QDesktopWidget>
 
 const int internalTimerInterval = 1000;
 

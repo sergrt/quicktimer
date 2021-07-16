@@ -1,5 +1,6 @@
-#include "stdafx.h"
 #include "Settings.h"
+
+#include <QSettings>
 
 const std::string Settings::fileName = "settings.ini";
 const int maxMenuIntervals = 10;

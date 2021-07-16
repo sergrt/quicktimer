@@ -1,9 +1,15 @@
 #pragma once
 
-#include <QtWidgets/QMainWindow>
 #include "ui_quicktimer.h"
-#include <chrono>
+
+#include <QMainWindow>
+#include <QSystemTrayIcon>
+#include <QTimer>
+#include <QMenu>
+
 #include "Settings.h"
+
+#include <chrono>
 
 class quicktimer : public QMainWindow {
     Q_OBJECT

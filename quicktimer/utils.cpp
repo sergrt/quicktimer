@@ -1,5 +1,6 @@
-#include "stdafx.h"
 #include "utils.h"
+
+#include <QString>
 
 std::string toHumanTime(std::chrono::seconds seconds) {
     int secondsCount = seconds.count();
